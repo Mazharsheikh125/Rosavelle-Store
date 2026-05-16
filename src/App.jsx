@@ -45,7 +45,7 @@ export default function App() {
   };
 
   // 🟢 TOTAL
-  const total = cart.reduce((sum, item) => sum + item.price *1250, 0);
+  const total = cart.reduce((sum, item) => sum + item.price , 0);
 
   // 🟢 WHATSAPP ORDER (FIXED ENCODING)
   const sendWhatsApp = () => {
@@ -57,7 +57,7 @@ export default function App() {
     let msg = "🛒 Order:%0A";
 
     cart.forEach((item, i) => {
-      msg += `${i + 1}. ${item.name} - Rs.${item.price *1250}%0A`;
+      msg += `${i + 1}. ${item.name} - Rs.${item.price}%0A`;
     });
 
     msg += `%0ATotal: Rs.${total}`;
