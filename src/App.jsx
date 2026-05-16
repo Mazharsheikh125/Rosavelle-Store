@@ -60,7 +60,7 @@ export default function App() {
       msg += `${i + 1}. ${item.name} - Rs.${item.price *1250}%0A`;
     });
 
-    msg += `%0ATotal: $${total}`;
+    msg += `%0ATotal: Rs.${total}`;
 
     const phone = "923363848063";
 
