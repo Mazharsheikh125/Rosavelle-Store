@@ -10,25 +10,25 @@ export default function App() {
   {
     id: 1,
     name: "Elegant Ladies Handbag",
-    price: 50,
+    price: 1000,
     image: bag1,
   },
   {
     id: 2,
     name: "Luxury Black Handbag",
-    price: 70,
+    price: 1250,
     image: bag2,
   },
   {
     id: 3,
     name: "Stylish Pink Handbag",
-    price: 90,
+    price: 1100,
     image: bag3,
   },
   {
     id: 4,
     name: "Classic Leather Handbag",
-    price: 120,
+    price: 850,
     image: bag4,
   },
 ]);
@@ -45,7 +45,7 @@ export default function App() {
   };
 
   // 🟢 TOTAL
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  const total = cart.reduce((sum, item) => sum + item.price *1250, 0);
 
   // 🟢 WHATSAPP ORDER (FIXED ENCODING)
   const sendWhatsApp = () => {
@@ -57,7 +57,7 @@ export default function App() {
     let msg = "🛒 Order:%0A";
 
     cart.forEach((item, i) => {
-      msg += `${i + 1}. ${item.name} - $${item.price}%0A`;
+      msg += `${i + 1}. ${item.name} - Rs.${item.price *1250}%0A`;
     });
 
     msg += `%0ATotal: $${total}`;
@@ -103,7 +103,7 @@ export default function App() {
 />
 
             <h3>{p.name}</h3>
-            <p>💲 {p.price}</p>
+            <p>Rs {p.price}</p>
 
             <button onClick={() => addToCart(p)}>
               Add to Cart
