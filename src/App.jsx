@@ -129,7 +129,7 @@ export default function App() {
         </div>
       ))}
 
-      <h3>Total: 💰 ${total}</h3>
+      <h3>Total: 💰 Rs{total}</h3>
 
       {/* 🟢 WHATSAPP BUTTON */}
       <button
