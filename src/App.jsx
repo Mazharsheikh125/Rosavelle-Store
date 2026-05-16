@@ -119,7 +119,7 @@ export default function App() {
 
       {cart.map((c, i) => (
         <div key={i} style={{ marginBottom: 5 }}>
-          {c.name} - ${c.price}
+          {c.name} - Rs{c.price}
           <button
             onClick={() => removeFromCart(i)}
             style={{ marginLeft: 10 }}
