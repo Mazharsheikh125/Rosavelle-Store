@@ -81,7 +81,6 @@ const openProduct = (product) => {
 
       <h1>🛍️ Rosavelle Store </h1>
 
-      <h2>{selectedProduct.name}</h2>
 
       {/* 🟢 PRODUCTS */}
 
@@ -143,20 +142,21 @@ const openProduct = (product) => {
 
       {/* 🟢 WHATSAPP BUTTON */}
       <button
-        onClick={sendWhatsApp}
-        style={{
-          marginTop: 10,
-          padding: "10px 20px",
-          background: "green",
-          color: "white",
-          border: "none",
-          cursor: "pointer",
-          borderRadius: 5,
-        }}
-      >
-        📲 WhatsApp Order
+  onClick={sendWhatsApp}
+  style={{
+    marginTop: 10,
+    padding: "10px 20px",
+    background: "green",
+    color: "white",
+    border: "none",
+    cursor: "pointer",
+    borderRadius: 5,
+  }}
+>
+  📲 WhatsApp Order
+</button>
 
-{selectedProduct && (
+  {selectedProduct && (
   <div
     style={{
       position: "fixed",
@@ -193,27 +193,19 @@ const openProduct = (product) => {
       <h2>{selectedProduct.name}</h2>
 
       <p
-  style={{
-    color: "#555",
-    fontSize: 14,
-    marginBottom: 10,
-  }}
->
-  {selectedProduct.description}
-</p>
+        style={{
+          color: "#555",
+          fontSize: 14,
+          marginBottom: 10,
+        }}
+      >
+        {selectedProduct.description}
+      </p>
 
       <p>💰 Rs {selectedProduct.price}</p>
 
       <button
         onClick={() => addToCart(selectedProduct)}
-        style={{
-          padding: "10px 20px",
-          background: "black",
-          color: "white",
-          border: "none",
-          borderRadius: 5,
-          cursor: "pointer",
-        }}
       >
         Add to Cart
       </button>
@@ -223,14 +215,6 @@ const openProduct = (product) => {
 
       <button
         onClick={() => setSelectedProduct(null)}
-        style={{
-          padding: "8px 20px",
-          background: "red",
-          color: "white",
-          border: "none",
-          borderRadius: 5,
-          cursor: "pointer",
-        }}
       >
         Close
       </button>
