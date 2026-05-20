@@ -5,6 +5,9 @@ import bag2 from "./assets/images/handbag4.jpg";
 import bag3 from "./assets/images/handbag2.jpg";
 import bag4 from "./assets/images/handbag1.jpg";
 
+import { Routes, Route, Link } from "react-router-dom";
+import ProductDetails from "./ProductDetails";
+
 export default function App() {
   const [products] = useState([
   {
@@ -39,16 +42,13 @@ export default function App() {
 },
 ]);
   const [cart, setCart] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+
 
   // 🟢 ADD TO CART
   const addToCart = (p) => {
     setCart((prev) => [...prev, p]);
   };
 
-const openProduct = (product) => {
-  setSelectedProduct(product);
-};
 
   // 🟢 REMOVE FROM CART
   const removeFromCart = (i) => {
@@ -81,7 +81,12 @@ const openProduct = (product) => {
   };
 
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
+  <Routes>
+
+    <Route
+      path="/"
+      element={
+        <div style={{ padding: 20, fontFamily: "Arial" }}> 
 
       <h1>🛍️ Rosavelle Store </h1>
 
@@ -89,41 +94,45 @@ const openProduct = (product) => {
       {/* 🟢 PRODUCTS */}
 
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-        {products.map((p) => (
-          <div
-  key={p.id}
-  onClick={() => openProduct(p)}
-  style={{
-    cursor: "pointer",
-              border: "1px solid #ccc",
-              padding: 10,
-              width: 200,
-              borderRadius: 10,
-              textAlign: "center",
-            }}
-          >
+  {products.map((p) => (
+    
+    <Link
+      key={p.id}
+      to={`/product/${p.id}`}
+      style={{
+        textDecoration: "none",
+        color: "black",
+      }}
+    >
+      <div
+        style={{
+          border: "1px solid #ccc",
+          padding: 10,
+          width: 200,
+          borderRadius: 10,
+          textAlign: "center",
+        }}
+      >
+        <img
+          src={p.image}
+          alt={p.name}
+          style={{
+            width: "100%",
+            height: 150,
+            objectFit: "cover",
+            borderRadius: 8,
+          }}
+        />
 
-            {/* 🟢 IMAGE FIX */}
-            <img
-  src={p.image}
-  alt={p.name}
-  style={{
-    width: "100%",
-    height: 150,
-    objectFit: "cover",
-    borderRadius: 8,
-  }}
-/>
+        <h3>{p.name}</h3>
 
-            <h3>{p.name}</h3>
-            <p>Rs {p.price}</p>
-
-            <button onClick={() => addToCart(p)}>
-              Add to Cart
-            </button>
-          </div>
-        ))}
+        <p>Rs {p.price}</p>
       </div>
+
+    </Link>
+
+  ))}
+</div>
 
       <hr />
 
@@ -159,73 +168,21 @@ const openProduct = (product) => {
 >
   📲 WhatsApp Order
 </button>
+        </div>
+      }
+    />
 
-  {selectedProduct && (
-  <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      background: "rgba(0,0,0,0.6)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <div
-      style={{
-        background: "white",
-        padding: 20,
-        borderRadius: 10,
-        width: 300,
-        textAlign: "center",
-      }}
-    >
-      <img
-        src={selectedProduct.image}
-        alt={selectedProduct.name}
-        style={{
-          width: "100%",
-          height: 250,
-          objectFit: "cover",
-          borderRadius: 10,
-        }}
-      />
+    <Route
+      path="/product/:id"
+      element={
+        <ProductDetails
+          products={products}
+          addToCart={addToCart}
+        />
+      }
+    />
 
-      <h2>{selectedProduct.name}</h2>
-
-      <p
-        style={{
-          color: "#555",
-          fontSize: 14,
-          marginBottom: 10,
-        }}
-      >
-        {selectedProduct.description}
-      </p>
-
-      <p>💰 Rs {selectedProduct.price}</p>
-
-      <button
-        onClick={() => addToCart(selectedProduct)}
-      >
-        Add to Cart
-      </button>
-
-      <br />
-      <br />
-
-      <button
-        onClick={() => setSelectedProduct(null)}
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
-
-    </div>
+  </Routes>
   );
 }
+  
