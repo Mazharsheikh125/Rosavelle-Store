@@ -222,8 +222,6 @@ const openProduct = (product) => {
   </div>
 )}
 
-      </button>
-
     </div>
   );
 }
