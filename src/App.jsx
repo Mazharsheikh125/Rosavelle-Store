@@ -33,11 +33,16 @@ export default function App() {
   },
 ]);
   const [cart, setCart] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // 🟢 ADD TO CART
   const addToCart = (p) => {
     setCart((prev) => [...prev, p]);
   };
+
+const openProduct = (product) => {
+  setSelectedProduct(product);
+};
 
   // 🟢 REMOVE FROM CART
   const removeFromCart = (i) => {
@@ -77,11 +82,14 @@ export default function App() {
       <h2>Products</h2>
 
       {/* 🟢 PRODUCTS */}
+
       <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
         {products.map((p) => (
           <div
-            key={p.id}
-            style={{
+  key={p.id}
+  onClick={() => openProduct(p)}
+  style={{
+    cursor: "pointer",
               border: "1px solid #ccc",
               padding: 10,
               width: 200,
@@ -145,6 +153,79 @@ export default function App() {
         }}
       >
         📲 WhatsApp Order
+
+{selectedProduct && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.6)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        background: "white",
+        padding: 20,
+        borderRadius: 10,
+        width: 300,
+        textAlign: "center",
+      }}
+    >
+      <img
+        src={selectedProduct.image}
+        alt={selectedProduct.name}
+        style={{
+          width: "100%",
+          height: 250,
+          objectFit: "cover",
+          borderRadius: 10,
+        }}
+      />
+
+      <h2>{selectedProduct.name}</h2>
+
+      <p>💰 Rs {selectedProduct.price}</p>
+
+      <button
+        onClick={() => addToCart(selectedProduct)}
+        style={{
+          padding: "10px 20px",
+          background: "black",
+          color: "white",
+          border: "none",
+          borderRadius: 5,
+          cursor: "pointer",
+        }}
+      >
+        Add to Cart
+      </button>
+
+      <br />
+      <br />
+
+      <button
+        onClick={() => setSelectedProduct(null)}
+        style={{
+          padding: "8px 20px",
+          background: "red",
+          color: "white",
+          border: "none",
+          borderRadius: 5,
+          cursor: "pointer",
+        }}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
       </button>
 
     </div>
