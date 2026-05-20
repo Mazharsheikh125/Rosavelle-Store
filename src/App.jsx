@@ -22,17 +22,21 @@ export default function App() {
   description: "Luxury black handbag perfect for parties and casual outings.",
 },
   {
-    id: 3,
-    name: "Stylish Pink Handbag",
-    price: 1100,
-    image: bag3,
-  },
+  id: 3,
+  name: "Stylish Pink Handbag",
+  price: 1100,
+  image: bag3,
+  description:
+    "Beautiful pink handbag with modern fashion design for everyday use.",
+},
   {
-    id: 4,
-    name: "Classic Leather Handbag",
-    price: 850,
-    image: bag4,
-  },
+  id: 4,
+  name: "Classic Leather Handbag",
+  price: 850,
+  image: bag4,
+  description:
+    "Classic leather handbag with premium finishing and elegant look.",
+},
 ]);
   const [cart, setCart] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
