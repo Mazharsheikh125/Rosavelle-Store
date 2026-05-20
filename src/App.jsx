@@ -8,17 +8,19 @@ import bag4 from "./assets/images/handbag1.jpg";
 export default function App() {
   const [products] = useState([
   {
-    id: 1,
-    name: "Elegant Ladies Handbag",
-    price: 1000,
-    image: bag1,
-  },
+  id: 1,
+  name: "Elegant Ladies Handbag",
+  price: 1000,
+  image: bag1,
+  description: "Premium stylish ladies handbag with elegant design and high quality leather.",
+},
   {
-    id: 2,
-    name: "Luxury Black Handbag",
-    price: 1250,
-    image: bag2,
-  },
+  id: 2,
+  name: "Luxury Black Handbag",
+  price: 1250,
+  image: bag2,
+  description: "Luxury black handbag perfect for parties and casual outings.",
+},
   {
     id: 3,
     name: "Stylish Pink Handbag",
@@ -79,7 +81,7 @@ const openProduct = (product) => {
 
       <h1>🛍️ Rosavelle Store </h1>
 
-      <h2>Products</h2>
+      <h2>{selectedProduct.name}</h2>
 
       {/* 🟢 PRODUCTS */}
 
@@ -189,6 +191,16 @@ const openProduct = (product) => {
       />
 
       <h2>{selectedProduct.name}</h2>
+
+      <p
+  style={{
+    color: "#555",
+    fontSize: 14,
+    marginBottom: 10,
+  }}
+>
+  {selectedProduct.description}
+</p>
 
       <p>💰 Rs {selectedProduct.price}</p>
 
