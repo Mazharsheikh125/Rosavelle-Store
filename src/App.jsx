@@ -83,130 +83,159 @@ export default function App() {
   return (
   <Routes>
 
-    <Route
-      path="/"
-      element={
-        <div
-  style={{
-    padding: 20,
-    fontFamily: "Arial",
-    background: "#fdf2f8",
-    minHeight: "100vh",
-  }}
-> 
-
-      <h1 style={{ 
-        textAlign: "center", 
-        color: "#be185d", 
-        marginBottom: 30, 
-        fontSize: "40px",
-         }} > 🛍️ Rosavelle Store </h1>
-
-
-      {/* 🟢 PRODUCTS */}
-
-      <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-  {products.map((p) => (
-    
-    <Link
-      key={p.id}
-      to={`/product/${p.id}`}
+    ```jsx id="w0h4oj"
+<Route
+  path="/"
+  element={
+    <div
       style={{
-        textDecoration: "none",
-        color: "black",
+        minHeight: "100vh",
+        background: "#fdf2f8",
+        padding: 30,
+        fontFamily: "Arial",
       }}
     >
-    
-<div
-  style={{
-    border: "1px solid #f9a8d4",
-    padding: 10,
-    width: 200,
-    borderRadius: 15,
-    textAlign: "center",
-    background: "white",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    transition: "0.3s",
-  }}
->
-        <img
-          src={p.image}
-          alt={p.name}
-          style={{
-            width: "100%",
-            height: 150,
-            objectFit: "cover",
-            borderRadius: 8,
-          }}
-        />
+      <h1
+        style={{
+          textAlign: "center",
+          color: "#be185d",
+          fontSize: "50px",
+        }}
+      >
+        🛍️ Rosavelle Store
+      </h1>
 
-        <h3>{p.name}</h3>
+      <p
+        style={{
+          textAlign: "center",
+          color: "#555",
+          marginBottom: 40,
+          fontSize: 18,
+        }}
+      >
+        Luxury & Stylish Ladies Handbags
+      </p>
 
-        <p style={{ color: "#db2777", fontWeight: "bold" }}>
-  Rs {p.price}
-</p>
+      {/* PRODUCTS */}
+
+      <div
+        style={{
+          display: "flex",
+          gap: 20,
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        {products.map((p) => (
+          <Link
+            key={p.id}
+            to={`/product/${p.id}`}
+            style={{
+              textDecoration: "none",
+              color: "black",
+            }}
+          >
+            <div
+              style={{
+                width: 240,
+                background: "white",
+                borderRadius: 15,
+                overflow: "hidden",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+              }}
+            >
+              <img
+                src={p.image}
+                alt={p.name}
+                style={{
+                  width: "100%",
+                  height: 220,
+                  objectFit: "cover",
+                }}
+              />
+
+              <div style={{ padding: 15 }}>
+                <h3>{p.name}</h3>
+
+                <p
+                  style={{
+                    color: "#db2777",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Rs {p.price}
+                </p>
+
+                <button
+                  style={{
+                    background: "#be185d",
+                    color: "white",
+                    border: "none",
+                    padding: "10px 15px",
+                    borderRadius: 8,
+                    cursor: "pointer",
+                  }}
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
 
-    </Link>
+      <hr style={{ margin: "40px 0" }} />
 
-  ))}
-</div>
+      {/* CART */}
 
-      <hr />
-
-      {/* 🟢 CART */}
-      <h2 style={{ color: "#be185d" }}> 🛒 Cart ({cart.length}) </h2>
+      <h2 style={{ color: "#be185d" }}>
+        🛒 Cart ({cart.length})
+      </h2>
 
       {cart.map((c, i) => (
-        <div key={i} style={{ marginBottom: 5 }}>
-          {c.name} - Rs{c.price}
-          <button 
-          onClick={sendWhatsApp} style={{
-             marginTop: 15, 
-             padding: "12px 25px", 
-             background: "#25D366", 
-             color: "white", 
-             border: "none", 
-             cursor: "pointer", 
-             borderRadius: 10, 
-             fontSize: 16, 
-             fontWeight: "bold",
-              }} >
-                 📲 WhatsApp Order 
-                 </button>
+        <div key={i} style={{ marginBottom: 10 }}>
+          {c.name} - Rs {c.price}
+
+          <button
+            onClick={() => removeFromCart(i)}
+            style={{
+              marginLeft: 10,
+              background: "red",
+              color: "white",
+              border: "none",
+              padding: "5px 10px",
+              borderRadius: 5,
+              cursor: "pointer",
+            }}
+          >
+            Remove
+          </button>
         </div>
       ))}
 
-      <h3>Total: 💰 Rs{total}</h3>
+      <h3>Total: 💰 Rs {total}</h3>
 
-      {/* 🟢 WHATSAPP BUTTON */}
+      {/* WHATSAPP BUTTON */}
+
       <button
-  onClick={sendWhatsApp}
-  style={{
-    marginTop: 10,
-    padding: "10px 20px",
-    background: "green",
-    color: "white",
-    border: "none",
-    cursor: "pointer",
-    borderRadius: 5,
-  }}
->
-  📲 WhatsApp Order
-</button>
-        </div>
-      }
-    />
-
-    <Route
-      path="/product/:id"
-      element={
-        <ProductDetails
-          products={products}
-          addToCart={addToCart}
-        />
-      }
-    />
+        onClick={sendWhatsApp}
+        style={{
+          marginTop: 15,
+          padding: "12px 25px",
+          background: "#25D366",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
+          borderRadius: 10,
+          fontSize: 16,
+          fontWeight: "bold",
+        }}
+      >
+        📲 WhatsApp Order
+      </button>
+    </div>
+  }
+/>
 
   </Routes>
   );
