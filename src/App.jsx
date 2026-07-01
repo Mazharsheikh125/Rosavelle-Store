@@ -178,7 +178,7 @@ export default function App() {
                 >
                   View Details
                 </button>
-                ```jsx id="cnysxu"
+              
 <button
   onClick={(e) => {
     e.preventDefault();
