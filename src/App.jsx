@@ -116,7 +116,7 @@ export default function App() {
         color: "black",
       }}
     >
-      ```jsx
+    
 <div
   style={{
     border: "1px solid #f9a8d4",
@@ -129,8 +129,6 @@ export default function App() {
     transition: "0.3s",
   }}
 >
-```
-
         <img
           src={p.image}
           alt={p.name}
@@ -144,7 +142,9 @@ export default function App() {
 
         <h3>{p.name}</h3>
 
-        <p>Rs {p.price}</p>
+        <p style={{ color: "#db2777", fontWeight: "bold" }}>
+  Rs {p.price}
+</p>
       </div>
 
     </Link>
@@ -155,17 +155,25 @@ export default function App() {
       <hr />
 
       {/* 🟢 CART */}
-      <h2>🛒 Cart ({cart.length})</h2>
+      <h2 style={{ color: "#be185d" }}> 🛒 Cart ({cart.length}) </h2>
 
       {cart.map((c, i) => (
         <div key={i} style={{ marginBottom: 5 }}>
           {c.name} - Rs{c.price}
-          <button
-            onClick={() => removeFromCart(i)}
-            style={{ marginLeft: 10 }}
-          >
-            Remove
-          </button>
+          <button 
+          onClick={sendWhatsApp} style={{
+             marginTop: 15, 
+             padding: "12px 25px", 
+             background: "#25D366", 
+             color: "white", 
+             border: "none", 
+             cursor: "pointer", 
+             borderRadius: 10, 
+             fontSize: 16, 
+             fontWeight: "bold",
+              }} >
+                 📲 WhatsApp Order 
+                 </button>
         </div>
       ))}
 
