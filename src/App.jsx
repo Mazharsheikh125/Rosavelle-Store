@@ -86,9 +86,21 @@ export default function App() {
     <Route
       path="/"
       element={
-        <div style={{ padding: 20, fontFamily: "Arial" }}> 
+        <div
+  style={{
+    padding: 20,
+    fontFamily: "Arial",
+    background: "#fdf2f8",
+    minHeight: "100vh",
+  }}
+> 
 
-      <h1>🛍️ Rosavelle Store </h1>
+      <h1 style={{ 
+        textAlign: "center", 
+        color: "#be185d", 
+        marginBottom: 30, 
+        fontSize: "40px",
+         }} > 🛍️ Rosavelle Store </h1>
 
 
       {/* 🟢 PRODUCTS */}
@@ -104,15 +116,21 @@ export default function App() {
         color: "black",
       }}
     >
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: 10,
-          width: 200,
-          borderRadius: 10,
-          textAlign: "center",
-        }}
-      >
+      ```jsx
+<div
+  style={{
+    border: "1px solid #f9a8d4",
+    padding: 10,
+    width: 200,
+    borderRadius: 15,
+    textAlign: "center",
+    background: "white",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+    transition: "0.3s",
+  }}
+>
+```
+
         <img
           src={p.image}
           alt={p.name}
