@@ -73,7 +73,7 @@ export default function App() {
 
     msg += `%0ATotal: Rs.${total}`;
 
-    const phone = "923363848063";
+    const phone = "+923363848063";
 
     const url = `https://wa.me/${phone}?text=${msg}`;
 
