@@ -178,6 +178,25 @@ export default function App() {
                 >
                   View Details
                 </button>
+                ```jsx id="cnysxu"
+<button
+  onClick={(e) => {
+    e.preventDefault();
+    addToCart(p);
+  }}
+  style={{
+    marginTop: 10,
+    background: "#db2777",
+    color: "white",
+    border: "none",
+    padding: "10px 15px",
+    borderRadius: 8,
+    cursor: "pointer",
+    width: "100%",
+  }}
+>
+  Add To Cart
+</button>
               </div>
             </div>
           </Link>
